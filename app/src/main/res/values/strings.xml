@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Our chat</string>
+    <string name="facebook_app_id">1039249406417764</string>
+    <string name="fb_login_protocol_scheme">fb1039249406417764</string>
+    <string name="login_email_edit_text_hint">Enter your email</string>
+    <string name="login_password_edit_text_hint">Enter password</string>
+    <string name="enter_your_user_name">Enter your user name</string>
+    <string name="new_user">New user?  </string>
+    <string name="sign_up">Sign up!</string>
+    <string name="login">login</string>
+    <string name="register">Register</string>
+    <string name="social_login">Social login</string>
+    <string name="wrong_email_format">Wrong email format</string>
+    <string name="password_size">Password must be at least 6 characters</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="add_friend">Add friend</string>
+    <string name="search">Search</string>
+    <string name="about_me">Bio</string>
+    <string name="edit">Edit</string>
+    <string name="friends">Friends</string>
+    <string name="select_profile_picture">Select profile picture</string>
+    <string name="take_new_profile_picture">Take new profile picture</string>
+    <string name="uploading">Uploading...</string>
+    <string name="type_something_to_let_your_friends_know_you_better">Type something to let your friends know you better</string>
+    <string name="submit">Submit</string>
+    <string name="cancel_request">Cancel request</string>
+    <string name="friend_request_not_sent">Send friend request</string>
+    <string name="confirm">Confirm</string>
+    <string name="delete">Delete</string>
+    <string name="incoming_requests">Incoming requests</string>
+    <string name="no_incoming_requests">No incoming requests</string>
+    <string name="no_friends_yet">No friends yet</string>
+    <string name="find_friends">Find friends</string>
+    <string name="profile">Profile</string>
+    <string name="no_chat_history_yet_click_chat_button_to_start_chatting">No chat history yet, Click chat button to start chatting</string>
+    <string name="no_one_to_chat_with_yet_add_more_friend_to_get_going">No one to chat with yet, Add friends to get going!</string>
+    <string name="type_a_message">Type a message</string>
+    <string name="empty_message">Can\'t send empty message</string>
+
+
+
+
+    <string name="you">You: %1$s</string>
+    <string name="other">%1$s: %2$s</string>
+    <string name="other_image">%1$s sent an image</string>
+    <string name="other_file">%1$s sent a file</string>
+    <string name="no_users_to_add_yet">No users to add yet.</string>
+    <string name="you_sent_image">You sent an image</string>
+    <string name="send_file">Send file</string>
+    <string name="send_picture">Send picture</string>
+    <string name="you_sent_file">you sent a file</string>
+    <string name="you_sent_record">you sent a voice record</string>
+    <string name="other_record">%1$s sent a voice record</string>
+    <string name="delete_from_friends">Remove from friends</string>
+    <string name="no_friends">User has no friends yet</string>
+
+
+</resources>
