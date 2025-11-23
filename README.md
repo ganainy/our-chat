@@ -9,7 +9,6 @@ A modern Android chat application with real-time messaging, push notifications, 
 - JDK 17 or later
 - Android SDK 34
 - Firebase project
-- Facebook Developer account (for Facebook login)
 
 ### Configuration
 
@@ -27,21 +26,6 @@ A modern Android chat application with real-time messaging, push notifications, 
      - Read/create/update/delete messages they are part of
    - **Important**: Without proper security rules, the app will crash with permission errors
 
-#### 2. Facebook Login Setup
-1. Create a Facebook app at [Facebook Developers](https://developers.facebook.com/)
-2. Add Facebook Login product
-3. Update the following in `app/src/main/res/values/strings.xml`:
-   - `facebook_app_id` - Your Facebook App ID
-   - `facebook_client_token` - Your Facebook Client Token
-   - `fb_login_protocol_scheme` - Format: `fb{YOUR_APP_ID}`
-
-#### 3. Secret Files
-The following files are excluded from version control and must be provided by each developer:
-- `app/google-services.json` - Firebase configuration file
-- Any keystore files (`.keystore`, `.jks`) - For signing release builds
-- `local.properties` - Local SDK paths (auto-generated)
-
-**Important**: Never commit secret files to version control. These files contain sensitive credentials and should remain private.
 
 ### Building the Project
 
@@ -50,19 +34,12 @@ The following files are excluded from version control and must be provided by ea
 3. Sync Gradle files
 4. Ensure all prerequisites are met
 5. Add `google-services.json` to the `app/` directory
-6. Configure Facebook login credentials in `app/src/main/res/values/strings.xml`
-7. Build and run the project
+6. Build and run the project
 
 
 
 
 ## Technology Stack
-
-### Core Technologies
-- **Kotlin 2.0.21** - Modern programming language with latest features
-- **Java 17** - Target and source compatibility
-- **Android SDK 34** - Latest Android API level
-- **Gradle 8.2.2** - Modern build system
 
 ### Architecture & Design Patterns
 - **MVVM (Model-View-ViewModel)** - Clean architecture pattern
@@ -80,7 +57,7 @@ The following files are excluded from version control and must be provided by ea
 - **Dexter 6.2.3** - Runtime permissions handling
 
 ### Firebase Services
-- **Firebase Authentication** - Email/password and Facebook login
+- **Firebase Authentication** - Email/password authentication
 - **Cloud Firestore** - Real-time NoSQL database
 - **Firebase Storage** - File and media storage
 - **Firebase Cloud Messaging (FCM)** - Push notifications
@@ -95,39 +72,14 @@ The following files are excluded from version control and must be provided by ea
 
 ## Features
 
-### Authentication
-Sign up and login with email/password or Facebook account
-  <img src="app-preview/Screenshot_20251123_142543.png" width="200" height="400">
- <img src="app-preview/Screenshot_20251123_142642.png" width="200" height="400"><br>
-  
-
-### Chat Management
-Real-time chat previews on the home screen
-<img src="app-preview/Screenshot_20251123_142720.png" width="200" height="400" ><br>
-
-
-### Profile Management
-Update profile information and pictures from camera or gallery
-<img src="app-preview/Screenshot_20251123_150958.png" width="200" height="400" ><br>
-
-### User Discovery
-Search for users and send friend requests to start chatting
-<img src="app-preview/Screenshot_20251123_153355.png" width="200" height="400" ><br>
-<img src="app-preview/Screenshot_20251123_153534.png" width="200" height="400" ><br>
-
-
-### Messaging
-Type messages, record audio messages, send files and images with full-screen viewing and pinch-to-zoom support
-<img src="app-preview/Screenshot_20251123_153534.png" width="200" height="400" ><br>
-
-
-### Notifications
-Receive real-time notifications for friend requests
-<img src="app-preview/Screenshot_20251123_153355.png" width="800" height="40" ><br>
-
-### Background Notifications
-Receive push notifications even when the app is closed
-<img src="app-preview/Screenshot_20251123_142720.png" width="200" height="400" ><br>
+| Feature | Description | Screenshots |
+|---------|-------------|-------------|
+| **Messages List** | View all your conversations in one place with real-time updates | <img src="app-preview/messages_list.png" width="200" height="400"> |
+| **Chatting** | Send and receive messages in real-time with rich media support | <img src="app-preview/chatting.png" width="200" height="400"> |
+| **User Profile** | Update your profile information and pictures from camera or gallery | <img src="app-preview/user_profile.png" width="200" height="400"> |
+| **Find Friends** | Search for users to connect with | <img src="app-preview/find_friends.png" width="200" height="400"> |
+| **Incoming Friend Requests** | View and manage friend requests from other users | <img src="app-preview/incmong_friend_requests.png" width="200" height="400"> |
+| **Contacts List** | Access your contacts and start conversations | <img src="app-preview/contacts_list.png" width="200" height="400"> |
 
 ## Project Structure
 
