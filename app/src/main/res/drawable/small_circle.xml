@@ -3,9 +3,7 @@
     android:shape="oval"
     android:useLevel="false">
 
-    <gradient
-        android:endColor="#6e5ff6"
-        android:startColor="#e6ceff" />
+    <solid android:color="@color/primary_new" />
     <size
         android:width="50dp"
         android:height="50dp" />

@@ -23,7 +23,7 @@
         android:background="@drawable/badge_background"
         android:gravity="center"
         android:padding="3dp"
-        android:text="0"
+        android:text="@string/zero"
         android:textColor="@android:color/white"
         android:textSize="10sp" />
 

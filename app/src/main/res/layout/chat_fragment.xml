@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-    </data>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/coordinator"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -20,75 +14,98 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/secondaryLightColor"
+                android:background="@color/background_light_new"
                 tools:context=".ui.chat.ChatFragment">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler"
                     android:layout_width="match_parent"
-                    android:layout_marginBottom="8dp"
                     android:layout_height="0dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:clipToPadding="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toTopOf="@id/messageLayout"
+                    app:layout_constraintBottom_toTopOf="@id/bottomInputLayout"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:listitem="@layout/sent_message_item" />
 
-
-                <!--  android:backgroundTintMode="@color/white"-->
-
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/recordFab"
-                    android:layout_width="wrap_content"
+                <!-- Bottom Input Section -->
+                <LinearLayout
+                    android:id="@+id/bottomInputLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/primaryColor"
-                    android:src="@drawable/ic_mic_white_24dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:background="@color/background_light_new"
+                    android:gravity="center_vertical"
+                    android:elevation="4dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/messageLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="56dp"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/circularbordersolid"
-                    app:layout_constraintBottom_toBottomOf="@+id/recordFab"
-                    app:layout_constraintEnd_toStartOf="@+id/recordFab"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/recordFab">
+                    app:layout_constraintEnd_toEndOf="parent">
 
-                    <ImageView
-                        android:id="@+id/attachmentImageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:src="@drawable/ic_attach_file_black_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-
-                        app:layout_constraintTop_toTopOf="parent" />
-
-
-                    <EditText
-                        android:id="@+id/messageEditText"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/messageLayout"
                         android:layout_width="0dp"
-                        android:layout_height="56dp"
-                        android:background="@drawable/circularbordersolid"
-                        android:hint="@string/type_a_message"
-                        android:imeOptions="actionSend"
-                        android:inputType="text"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/message_input_rounded"
                         android:paddingStart="16dp"
-                        android:textSize="16sp"
-                        app:errorEnabled="true"
-                        app:layout_constraintEnd_toStartOf="@+id/attachmentImageView"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        android:paddingEnd="8dp">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <EditText
+                            android:id="@+id/messageEditText"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/type_a_message"
+                            android:imeOptions="actionSend"
+                            android:inputType="text"
+                            android:textSize="16sp"
+                            android:textColor="@color/slate_900"
+                            android:textColorHint="@color/slate_400"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/attachmentImageView"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
+                        <ImageView
+                            android:id="@+id/attachmentImageView"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_attach_file_black_24dp"
+                            android:contentDescription="@string/app_name"
+                            app:tint="@color/slate_500"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/recordFab"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_vertical"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:padding="0dp"
+                        android:gravity="center"
+                        app:iconGravity="textStart"
+                        android:backgroundTint="@color/primary_new"
+                        android:contentDescription="@string/app_name"
+                        app:icon="@drawable/ic_mic_white_24dp"
+                        app:iconTint="@color/white"
+                        app:iconSize="24dp"
+                        app:iconPadding="0dp"
+                        app:cornerRadius="24dp" />
+
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -123,4 +140,3 @@
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</layout>

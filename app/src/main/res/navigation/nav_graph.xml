@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.ourchat.ui.login.LoginFragment"
-        android:label="LoginFragment">
+        android:name="com.ganainy.ourchat.ui.login.LoginFragment"
+        android:label="@string/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_signupFragment"
             app:destination="@id/signupFragment" />
@@ -19,17 +19,20 @@
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.example.ourchat.ui.signup.SignupFragment"
-        android:label="SignupFragment">
+        android:name="com.ganainy.ourchat.ui.signup.SignupFragment"
+        android:label="@string/signup_fragment">
         <action
             android:id="@+id/action_signupFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@+id/nav_view" />
+        <action
+            android:id="@+id/action_signupFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.ourchat.ui.home.HomeFragment"
-        android:label="home_fragment"
+        android:name="com.ganainy.ourchat.ui.home.HomeFragment"
+        android:label="@string/messages"
         tools:layout="@layout/home_fragment">
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
@@ -53,19 +56,23 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.ourchat.ui.profile.ProfileFragment"
-        android:label="ProfileFragment">
+        android:name="com.ganainy.ourchat.ui.profile.ProfileFragment"
+        android:label="@string/profile_fragment">
         <action
             android:id="@+id/action_profileFragment_to_findUserFragment"
             app:destination="@id/findUserFragment" />
         <action
             android:id="@+id/action_profileFragment_to_differentUserProfile"
             app:destination="@id/differentUserProfile" />
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@+id/nav_view" />
     </fragment>
     <fragment
         android:id="@+id/findUserFragment"
-        android:name="com.example.ourchat.ui.findUser.FindUserFragment"
-        android:label="find_user_fragment"
+        android:name="com.ganainy.ourchat.ui.findUser.FindUserFragment"
+        android:label="@string/find_user_fragment"
         tools:layout="@layout/find_user_fragment">
         <action
             android:id="@+id/action_findUserFragment_to_differentUserProfile"
@@ -75,16 +82,16 @@
     </fragment>
     <fragment
         android:id="@+id/differentUserProfile"
-        android:name="com.example.ourchat.ui.different_user_profile.DifferentUserProfileFragment"
-        android:label="DifferentUserProfile" />
+        android:name="com.ganainy.ourchat.ui.different_user_profile.DifferentUserProfileFragment"
+        android:label="@string/different_user_profile" />
     <fragment
         android:id="@+id/incomingRequestsFragment"
-        android:name="com.example.ourchat.ui.incoming_requests.IncomingRequestsFragment"
-        android:label="IncomingRequestsFragment" />
+        android:name="com.ganainy.ourchat.ui.incoming_requests.IncomingRequestsFragment"
+        android:label="@string/incoming_requests" />
     <fragment
         android:id="@+id/contactsFragment"
-        android:name="com.example.ourchat.ui.contacts.ContactsFragment"
-        android:label="ContactsFragment">
+        android:name="com.ganainy.ourchat.ui.contacts.ContactsFragment"
+        android:label="@string/contacts">
         <action
             android:id="@+id/action_contactsFragment_to_findUserFragment"
             app:destination="@id/findUserFragment" />
@@ -94,6 +101,11 @@
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.example.ourchat.ui.chat.ChatFragment"
-        android:label="ChatFragment" />
+        android:name="com.ganainy.ourchat.ui.chat.ChatFragment"
+        android:label="@string/chat_fragment">
+        <action
+            android:id="@+id/action_chatFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@+id/nav_view" />
+    </fragment>
 </navigation>

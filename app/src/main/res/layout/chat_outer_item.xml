@@ -4,81 +4,145 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="chatParticipant"
-            type="com.example.ourchat.data.model.ChatParticipant" />
+            type="com.ganainy.ourchat.data.model.ChatParticipant" />
 
         <variable
             name="clickListener"
-            type="com.example.ourchat.ui.home.ClickListener" />
+            type="com.ganainy.ourchat.ui.home.ClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:onClick="@{() -> clickListener.onClick(chatParticipant)}">
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> clickListener.onClick(chatParticipant)}"
+        android:minHeight="80dp">
 
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <!-- Profile Image with Online Indicator -->
+        <FrameLayout
+            android:id="@+id/profileContainer"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:clipChildren="true"
+            android:clipToPadding="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:setRoundImageFromChatParticipant="@{chatParticipant}"
-            app:srcCompat="@drawable/anonymous_profile" />
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <TextView
-            android:id="@+id/nameTextView"
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/imageView"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                app:setRoundImageFromChatParticipant="@{chatParticipant}"
+                app:srcCompat="@drawable/anonymous_profile" />
+
+            <!-- Online Indicator (hidden by default) -->
+            <View
+                android:id="@+id/onlineIndicator"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="bottom|end"
+                android:background="@drawable/online_status_indicator"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <!-- Content Column -->
+        <LinearLayout
+            android:id="@+id/contentColumn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@{chatParticipant.particpant.username}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            app:layout_constraintEnd_toStartOf="@+id/dateTextView"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
-            tools:text="Amr mohammed" />
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="12dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/metaColumn"
+            app:layout_constraintStart_toEndOf="@+id/profileContainer"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <TextView
-            android:id="@+id/messageTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            app:setLastMessageText="@{chatParticipant}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/nameTextView"
-            tools:text="Last message user sent" />
+            <!-- Name -->
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{chatParticipant.particpant.username}"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/slate_800"
+                tools:text="Jane Doe" />
 
-        <TextView
-            android:id="@+id/dateTextView"
+            <!-- Last Message -->
+            <TextView
+                android:id="@+id/messageTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:setLastMessageText="@{chatParticipant}"
+                android:textSize="14sp"
+                android:textColor="@color/slate_500"
+                tools:text="Sounds good, see you then!" />
+
+        </LinearLayout>
+
+        <!-- Metadata Column (Time + Badge) -->
+        <LinearLayout
+            android:id="@+id/metaColumn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            app:formatDateFromMap="@{chatParticipant.lastMessageDate}"
-            app:layout_constraintBottom_toBottomOf="@+id/nameTextView"
+            android:orientation="vertical"
+            android:gravity="end"
+            android:layout_marginStart="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/nameTextView"
-            tools:text="2/1/2020" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <TextView
-            android:layout_width="match_parent"
+            <!-- Timestamp -->
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:formatDateFromMap="@{chatParticipant.lastMessageDate}"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/primaryColor"
+                tools:text="10:42 AM" />
+
+            <!-- Unread Badge -->
+            <TextView
+                android:id="@+id/unreadBadge"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/unread_badge_background"
+                android:gravity="center"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                tools:text="2"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="@color/grey"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:layout_marginStart="88dp"
+            android:background="@color/slate_200"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/profileContainer" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

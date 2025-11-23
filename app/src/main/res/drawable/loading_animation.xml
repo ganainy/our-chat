@@ -21,3 +21,4 @@
     android:drawable="@drawable/loading_img"
     android:pivotX="50%"
     android:pivotY="50%" />
+

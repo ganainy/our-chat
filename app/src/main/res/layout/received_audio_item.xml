@@ -9,103 +9,114 @@
 
         <variable
             name="message"
-            type="com.example.ourchat.data.model.RecordMessage" />
+            type="com.ganainy.ourchat.data.model.RecordMessage" />
 
         <variable
             name="clickListener"
-            type="com.example.ourchat.ui.chat.MessageClickListener" />
+            type="com.ganainy.ourchat.ui.chat.MessageClickListener" />
 
         <variable
             name="position"
             type="Integer" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:onClick="@{() -> clickListener.onMessageClick(position,message)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/bubble"
             android:layout_width="0dp"
-            android:layout_weight="8"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/incoming_bubble"
-            android:onClick="@{() -> clickListener.onMessageClick(position,message)}"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:maxWidth="320dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/playPauseImage"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="12dp"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:src="@drawable/ic_play_arrow_black_24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/bubble"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.15" />
-
-
             <TextView
-                android:id="@+id/durationTextView"
+                android:id="@+id/senderName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/dateTextView"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toEndOf="@+id/playPauseImage"
-                app:layout_constraintTop_toBottomOf="@+id/progressbar"
-                app:setDuration="@{message.duration}"
-                tools:text="2:12" />
-
-            <ProgressBar
-                android:id="@+id/progressbar"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:gravity="start"
-                android:minWidth="150dp"
-                android:paddingLeft="8dp"
-                android:paddingTop="4dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="10dp"
-                android:progressTint="@color/blue"
-                app:layout_constraintBottom_toBottomOf="@+id/playPauseImage"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/playPauseImage"
-                app:layout_constraintTop_toTopOf="@+id/playPauseImage" />
-
-            <TextView
-                android:id="@+id/dateTextView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="2dp"
-                android:gravity="end"
-                app:formatDate="@{message.created_at}"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/durationTextView"
-                app:layout_constraintTop_toBottomOf="@+id/progressbar"
-                tools:text='rue"app:"="true"idth="true"ap"idth="true"ap"idth="true"ap"idth="true"app:"="true"0' />
+                android:layout_marginBottom="4dp"
+                android:text="@{message.senderName}"
+                android:textColor="@color/text_secondary_light"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="start"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Friend Name" />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bubbleContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bubble_received_new"
+                android:padding="12dp"
+                android:elevation="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/senderName">
+
+                <LinearLayout
+                    android:id="@+id/audioControls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:minWidth="200dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <ImageView
+                        android:id="@+id/playPauseImage"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:padding="4dp"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:src="@drawable/ic_play_arrow_black_24dp"
+                        android:contentDescription="@string/app_name"
+                        app:tint="@color/primary_new" />
+
+                    <ProgressBar
+                        android:id="@+id/progressbar"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="4dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:progressTint="@color/primary_new"
+                        android:progressBackgroundTint="@color/slate_300" />
+
+                    <TextView
+                        android:id="@+id/durationTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary_light"
+                        app:setDuration="@{message.duration}"
+                        tools:text="0:15" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/dateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="end"
+                    android:textColor="@color/text_secondary_light"
+                    android:textSize="12sp"
+                    app:formatDate="@{message.created_at}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/audioControls"
+                    tools:text="Vor 2 Minuten" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.legacy.widget.Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="4" />
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

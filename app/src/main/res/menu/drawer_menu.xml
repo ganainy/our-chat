@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/homeFragment"
+            android:icon="@drawable/ic_chat_purple_24dp"
+            android:title="@string/messages" />
+
+        <item
+            android:id="@+id/profileFragment"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="@string/profile" />
+
+        <item
+            android:id="@+id/findUserFragment"
+            android:icon="@drawable/ic_person_add_black_24dp"
+            android:title="@string/add_friend" />
+
+        <item
+            android:id="@+id/incomingRequestsFragment"
+            android:icon="@drawable/ic_request_white_24dp"
+            android:title="@string/incoming_requests" />
+    </group>
+
+    <item android:title="@string/account">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_person_black_24dp"
+                android:title="@string/logout" />
+        </menu>
+    </item>
+
+</menu>
+

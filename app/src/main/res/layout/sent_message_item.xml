@@ -9,11 +9,11 @@
 
         <variable
             name="message"
-            type="com.example.ourchat.data.model.TextMessage" />
+            type="com.ganainy.ourchat.data.model.TextMessage" />
 
         <variable
             name="clickListener"
-            type="com.example.ourchat.ui.chat.MessageClickListener" />
+            type="com.ganainy.ourchat.ui.chat.MessageClickListener" />
 
         <variable
             name="position"
@@ -22,56 +22,71 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginStart="100dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:onClick="@{() -> clickListener.onMessageClick(position,message)}">
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/sent_bubble"
+            android:layout_marginStart="8dp"
+            android:maxWidth="320dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <TextView
-                android:id="@+id/progressbar"
+                android:id="@+id/senderName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:gravity="start"
-                android:lineSpacingExtra="2dp"
-                android:paddingLeft="8dp"
-                android:paddingTop="4dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="10dp"
-                android:text="@{message.text}"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/dateTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="hasfasihasfasihasfasi" />
-
-            <TextView
-                android:id="@+id/dateTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="4dp"
+                android:text="@{message.senderName}"
+                android:textColor="@color/text_secondary_light"
+                android:textSize="14sp"
+                android:textStyle="bold"
                 android:gravity="end"
-                app:formatDate="@{message.created_at}"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/progressbar"
-                tools:text="14:16" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="You" />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bubbleContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bubble_sent_new"
+                android:padding="12dp"
+                android:elevation="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/senderName">
+
+                <TextView
+                    android:id="@+id/progressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:lineSpacingExtra="2dp"
+                    android:text="@{message.text}"
+                    android:textColor="@color/text_light"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Message text" />
+
+                <TextView
+                    android:id="@+id/dateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="end"
+                    android:textColor="@color/text_secondary_light"
+                    android:textSize="12sp"
+                    app:formatDate="@{message.created_at}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/progressbar"
+                    tools:text="Vor 8 Minuten" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

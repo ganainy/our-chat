@@ -7,7 +7,7 @@
 
         <variable
             name="user"
-            type="com.example.ourchat.data.model.User" />
+            type="com.ganainy.ourchat.data.model.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

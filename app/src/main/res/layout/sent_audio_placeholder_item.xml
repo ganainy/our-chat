@@ -9,11 +9,11 @@
 
         <variable
             name="message"
-            type="com.example.ourchat.data.model.Message" />
+            type="com.ganainy.ourchat.data.model.Message" />
 
         <variable
             name="clickListener"
-            type="com.example.ourchat.ui.chat.MessageClickListener" />
+            type="com.ganainy.ourchat.ui.chat.MessageClickListener" />
 
         <variable
             name="position"

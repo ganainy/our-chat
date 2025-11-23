@@ -7,11 +7,11 @@
 
         <variable
             name="message"
-            type="com.example.ourchat.data.model.FileMessage" />
+            type="com.ganainy.ourchat.data.model.FileMessage" />
 
         <variable
             name="clickListener"
-            type="com.example.ourchat.ui.chat.MessageClickListener" />
+            type="com.ganainy.ourchat.ui.chat.MessageClickListener" />
 
         <variable
             name="position"
@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:textColor="@color/blue"
+                android:textColor="@color/primaryColor"
                 app:setUnderlinedText="@{message.name}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
                 app:layout_constrainedWidth="true"

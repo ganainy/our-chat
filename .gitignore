@@ -12,3 +12,13 @@
 /captures
 .externalNativeBuild
 .cxx
+
+# Secret files - users must provide their own
+app/google-services.json
+**/google-services.json
+*.keystore
+*.jks
+local.properties
+secrets.properties
+.env
+.env.local

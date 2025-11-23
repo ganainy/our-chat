@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <View
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha=".5"
-        android:background="@color/secondaryLightColor" />
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha=".5"
+            android:background="@color/secondaryLightColor" />
 
 
-    <com.airbnb.lottie.LottieAnimationView
+        <ProgressBar
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/loading" />
+            android:indeterminateTint="@color/primaryColor" />
 
 
-</FrameLayout>
+    </FrameLayout>
+</layout>

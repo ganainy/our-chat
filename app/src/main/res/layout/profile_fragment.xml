@@ -1,67 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <data>
-
-    </data>
-
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/background_light"
+        android:scrollbarAlwaysDrawVerticalTrack="true">
 
-        <ScrollView
-            android:id="@+id/scrollView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:animateLayoutChanges="true"
-            android:background="@color/secondaryLightColor"
-            android:scrollbarAlwaysDrawVerticalTrack="true">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!-- Top Profile Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/top_profile"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <!--Top Profile Section -->
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/top_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/circularbordersolid"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:contentPadding="24dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView2"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="8dp"
-                        app:cardElevation="0dp"
-                        app:cardCornerRadius="60dp"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- Profile Image Container -->
+                    <FrameLayout
+                        android:id="@+id/profileImageContainer"
+                        android:layout_width="112dp"
+                        android:layout_height="112dp"
+                        android:clipChildren="true"
+                        android:clipToPadding="true"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
+                        <com.mikhaellopez.circularimageview.CircularImageView
                             android:id="@+id/profile_image"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:layout_gravity="center"
                             app:srcCompat="@drawable/anonymous_profile"
-                            app:civ_border_color="#EDDFF8"
+                            app:civ_border="true"
                             app:civ_border_width="2dp"
-
-                            />
+                            app:civ_border_color="@color/background_light"
+                            app:civ_shadow="false" />
 
                         <ProgressBar
                             android:id="@+id/uploadProgressBar"
@@ -77,229 +70,235 @@
                             android:layout_gravity="bottom"
                             android:gravity="center"
                             android:text="@string/uploading"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
                             android:visibility="gone" />
 
+                        <!-- Camera Icon -->
+                        <ImageView
+                            android:id="@+id/cameraImageView"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_gravity="bottom|end"
+                            android:background="@drawable/small_circle"
+                            android:contentDescription="@string/app_name"
+                            android:padding="6dp"
+                            android:src="@drawable/ic_camera_alt_black_24dp"
+                            app:tint="@color/white" />
+                    </FrameLayout>
 
-                    </androidx.cardview.widget.CardView>
-
-
+                    <!-- Name -->
                     <TextView
                         android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:textColor="#424242"
-                        android:textSize="21sp"
+                        android:layout_marginTop="16dp"
+                        android:textColor="@color/slate_900"
+                        android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cameraImageView"
-                        tools:text="Amr mohammed" />
+                        app:layout_constraintTop_toBottomOf="@+id/profileImageContainer"
+                        tools:text="Amr Mohammed" />
 
+                    <!-- Email -->
                     <TextView
                         android:id="@+id/email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/slate_500"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/name"
                         tools:text="amr@gmail.com" />
 
-                    <ImageView
-                        android:id="@+id/cameraImageView"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_marginTop="100dp"
-                        android:background="@drawable/small_circle"
-                        android:padding="8dp"
-                        android:src="@drawable/ic_camera_alt_black_24dp"
-                        app:layout_constraintEnd_toEndOf="@+id/cardView2"
-                        app:layout_constraintStart_toStartOf="@+id/cardView2"
-                        app:layout_constraintTop_toTopOf="@+id/cardView2" />
-
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
 
-                <!--About Me Card-->
+            <!-- Bio Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/about_me"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:contentPadding="20dp">
+
                 <LinearLayout
-                    android:id="@+id/about_me"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/circularbordersolid"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/top_profile">
+                    android:orientation="vertical">
 
+                    <!-- Bio Header -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/about_me"
-                                android:textSize="17sp"
-                                android:textStyle="bold" />
-
-
-                            <Space
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                            <TextView
-                                android:id="@+id/edit_textview"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="10dp"
-                                android:text="@string/edit"
-                                android:textColor="@color/primaryColor"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/newBioEditText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/type_something_to_let_your_friends_know_you_better"
-                            android:visibility="gone" />
-
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/bioTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/about_me"
+                            android:textColor="@color/slate_900"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/edit_textview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            tools:text="Description goes here" />
-
-
+                            android:text="@string/edit"
+                            android:textColor="@color/primary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
-                </LinearLayout>
+                    <!-- Bio Edit Field -->
+                    <EditText
+                        android:id="@+id/newBioEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:autofillHints="name"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/type_something_to_let_your_friends_know_you_better"
+                        android:inputType="textMultiLine"
+                        android:minHeight="48dp"
+                        android:textColor="@color/slate_600"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
 
-                <!--friends card-->
+                    <!-- Bio Text -->
+                    <TextView
+                        android:id="@+id/bioTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/slate_600"
+                        android:textSize="14sp"
+                        tools:text="No bio yet" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Friends Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/friends_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:contentPadding="20dp">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/friends_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/circularbordersolid"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/about_me"
-                    tools:layout_editor_absoluteX="8dp">
+                    android:layout_height="wrap_content">
 
-
-                    <ImageView
-                        android:id="@+id/loadingFriendsImageView"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/loading_animation"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-                        app:layout_constraintStart_toEndOf="@+id/textView6"
-                        app:layout_constraintTop_toTopOf="@+id/textView6" />
-
-                    <TextView
-                        android:id="@+id/friends_count_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-                        app:layout_constraintStart_toStartOf="@+id/loadingFriendsImageView"
-                        app:layout_constraintTop_toTopOf="@+id/textView6"
-                        tools:text="120" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/friends_recycler"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:spanCount="3"
-                        app:layout_constraintTop_toBottomOf="@+id/textView6"
-                        tools:itemCount="10"
-                        tools:listitem="@layout/friend_item" />
-
+                    <!-- Friends Header -->
                     <TextView
                         android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:text="@string/friends"
-                        android:textSize="17sp"
+                        android:textColor="@color/slate_900"
+                        android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/no_friends_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/circularbordersolid"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@+id/friends_layout">
+                    <!-- Loading Indicator -->
+                    <ImageView
+                        android:id="@+id/loadingFriendsImageView"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/loading_animation"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView6" />
 
+                    <!-- Friends Count -->
                     <TextView
-                        android:id="@+id/textView7"
+                        android:id="@+id/friends_count_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/no_friends_yet"
-                        android:textSize="17sp"
+                        android:textColor="@color/slate_600"
+                        android:textSize="14sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView6"
+                        tools:text="120" />
 
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:id="@+id/lottieAnimationView4"
+                    <!-- Friends RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/friends_recycler"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:layout_marginTop="4dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7"
-                        app:lottie_autoPlay="true"
-                        app:lottie_loop="false"
-                        app:lottie_rawRes="@raw/empty_box" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/addFriendsButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/find_friends"
-                        android:textAllCaps="false"
-                        app:icon="@drawable/ic_person_add_black_24dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView4" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView6"
+                        app:spanCount="3"
+                        tools:itemCount="9"
+                        tools:listitem="@layout/friend_item" />
 
+                    <!-- No Friends Layout -->
+                    <LinearLayout
+                        android:id="@+id/no_friends_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+                        <!-- No Friends Message -->
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/no_friends_yet"
+                            android:textColor="@color/slate_600"
+                            android:textSize="14sp" />
+
+                        <!-- Add Friends Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/addFriendsButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="@string/find_friends"
+                            android:textAllCaps="false"
+                            app:backgroundTint="@color/primary"
+                            app:cornerRadius="12dp"
+                            app:icon="@drawable/ic_person_add_black_24dp"
+                            app:iconGravity="textStart" />
+
+                    </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
+        </LinearLayout>
+    </ScrollView>
 
 
         <!--persistant bottom navigation-->
@@ -322,13 +321,3 @@
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-</layout>
-
-
-
-
-
-
-
